@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Alumn extends Model
+{
+    use HasFactory;
+    protected $table = "alumns"; /* nombre tabla relacionada al modelo */
+    protected $fillable = ['name', 'apellido', 'edad', 'direccion']; /* Atributos para visualizar datos de la tabla; filliable visible, hiden no visible */
+    protected $hidden = ['id'];
+
+    /**
+     * Fx para obtener todos los registros
+     */
+    public function obtenerAlumnos()
+    {
+        return Alumn::all();
+    }
+
+    /**
+     * Funcion para obtene los registros por ID 
+     */
+    public function obtenerAlumnoPorId($id)
+    {
+        return Alumn::find($id);
+    }
+
+    
+}
