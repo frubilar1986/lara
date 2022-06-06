@@ -2,7 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Curso de laravel</title>
+    <title>@yield('title')</title>
+    {{-- <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+            }
+          }
+        }
+      </script> --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
 <body>
@@ -13,5 +25,6 @@
     </ul>
     <br>
     @yield('contenido')
+    @yield('pagination')
 </body>
 </html>

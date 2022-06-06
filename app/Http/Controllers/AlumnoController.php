@@ -17,7 +17,7 @@ class AlumnoController extends Controller
     {
         $alumnos = Alumno::all();
         return view('alumnoss.index', ['alumnos' => $alumnos]);
-    }
+    }  
 
     /**
      * Show the form for creating a new resource.

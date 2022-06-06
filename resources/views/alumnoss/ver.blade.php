@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <a href="{{ route('alumnoss.index') }}"> Ver listado Alumnos</a>
+    <a href="{{ route('alumnos.index') }}"> Ver listado Alumnos</a>
     <h2>Ver Alumno</h2>
     <label><strong>Nombres y Apellidos:</strong> {{ $alumno->nombre_apellido }}</label><br>
     <label><strong>Edad:</strong> {{ $alumno->edad }}</label><br>

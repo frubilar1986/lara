@@ -1,38 +1,6 @@
-{{-- <!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>Curso de laravel</title>
-    <style>
-        body {
-            margin: auto;
-            padding: 50px;
-        }
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        table,
-        td,
-        th {
-            border: 1px solid black;
-        }
-
-    </style>
-</head>
-
-<body> --}}
-    @extends('layout')
-    @section('contenido')
-        
-    @endsection
-    {{-- <a href="{{ route('alumnos.create') }}"> Nuevo Alumno</a>
-    <a href="{{ route('profesores.index') }}"> Ver listado Profesores</a>
-    <a href="{{ route('cursos.index') }}"> Ver listado cursos</a>
-    <br> --}}
+@extends('layout')
+@section('title', $alumnos[0]->nombre_apellido)
+@section('contenido')
     <h2>Listado de Alumnos</h2>
     <table>
         <tr>
@@ -54,7 +22,9 @@
                 </td>
             </tr>
         @endforeach
-    {{-- </table>
-</body>
 
-</html> --}}
+        
+        <br>
+        <p>direccion : {{$alumnos[0]->direccion}}</p>
+        
+    @endsection

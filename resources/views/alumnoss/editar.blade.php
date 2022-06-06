@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -45,8 +45,10 @@
     </style>
 </head>
 
-<body>
-    <a href="{{ route('alumnoss.index') }}"> Ver listado Alumnos</a>
+<body> --}}
+@extends('layout')
+@section('contenido')
+    <a href="{{ route('alumnos.index') }}"> Ver listado Alumnos</a>
     <h2>Editar Alumno</h2>
     <form action="{{ route('alumnos.update', $alumno->id) }}" method="POST">
         @csrf
@@ -68,12 +70,12 @@
         <input type="text" name="telefono" placeholder="Teléfono" value="{{ old('telefono', $alumno->telefono) }}">
 
         <label>Dirección:</label>
-        <input type="text" name="direccion" placeholder="Dirección"
-            value="{{ old('direccion', $alumno->direccion) }}">
+        <input type="text" name="direccion" placeholder="Dirección" value="{{ old('direccion', $alumno->direccion) }}">
         {{-- <input type="text" name="telefono" placeholder="Teléfono" value="{{ $alumno->telefono }}"> --}}
         {{-- <input type="text" name="direccion" placeholder="Dirección" value="{{ $alumno->direccion }}"> --}}
         <input type="submit" value="Guardar">
     </form>
-</body>
+@endsection
+{{-- </body>
 
-</html>
+</html> --}}
