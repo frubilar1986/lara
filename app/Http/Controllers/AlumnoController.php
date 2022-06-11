@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreCurso;
+
 
 class AlumnoController extends Controller
 {
@@ -35,12 +37,13 @@ class AlumnoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    // public function store(Request $request)
+    public function store(StoreCurso $request)
     {
-        $request->validate([
-            'nombre_apellido' => 'required|max:75',
-            'edad' => 'required|integer',
-        ]);
+        // $request->validate([
+        //     'nombre_apellido' => 'required|max:75',
+        //     'edad' => 'required|integer',
+        // ]);
         $alumno = new Alumno($request->all());
         $alumno->save();
         return redirect()->action([AlumnoController::class, 'index']);
@@ -106,7 +109,7 @@ class AlumnoController extends Controller
         } else {
             $alumno = Alumno::findOrFail($id);
             $alumno->delete();
-            return redirect()->action([AlumnoController::class, 'index']);
+            return redirect()->action([[AlumnoController::class, 'index']]);
         }
     }
 }

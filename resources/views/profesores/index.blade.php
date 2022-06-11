@@ -43,6 +43,12 @@
             </tr>
         @endforeach
     </table>
+
+    @if (session('info') )
+        <script>
+            alert("{{session('info')}}");
+        </script>
+    @endif
 @endsection
 {{-- </body>
 

@@ -22,6 +22,7 @@
         <li><a href="{{ route('profesores.index') }}">Profesores</a></li>
         <li><a href="{{ route('alumnos.index') }}">Alumnos</a></li>
         <li><a href="{{ route('cursos.index') }}">Cursos</a></li>
+        <li><a href="{{ route('email.send') }}">Enviar mail</a></li>
     </ul>
     <br>
     @yield('contenido')

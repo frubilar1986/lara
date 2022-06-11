@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <a href="{{ route('alumnoss.index') }}"> Ver listado Alumnos</a>
+    <a href="{{ route('alumnos.index') }}"> Ver listado Alumnos</a>
     <h2>Nuevo Alumno</h2>
     <form action="{{ route('alumnos.store') }}" method="POST">
         @csrf

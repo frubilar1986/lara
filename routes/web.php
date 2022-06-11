@@ -4,8 +4,12 @@ use App\Http\Controllers\AlumnController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\ContactanosController;
 use App\Http\Controllers\CursoController;
+use App\Mail\ContactanosMailable;
 use Database\Factories\AlumnoFactory;
+use Illuminate\Support\Facades\Mail;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -35,19 +39,35 @@ Route::get('/', function () {
      // echo '<a href="' . route('contacto') . '">Contacto 5</a> <br>';
 });
 
-Route::get('help', function () {
-     return "contacto...dddddddd";
-})->name('contacto');/* fx que ayuda a no cambiar nombre de enlace */
+// Route::get('contactanos', function () {
+//      $correo = new ContactanosMailable;
+//      Mail::to('juntarSe@gmail.com')->send($correo);
+//      return redirect()->action([ProfesorController::class,'index']);
+// })->name('email.send');/* fx que ayuda a no cambiar nombre de enlace */
 
+Route::get('contacto',[ContactanosController::class,'index'])->name('email.send');
+Route::post('exit',[ContactanosController::class,'store'])->name('email.store');
 //--------------------------------
 //Tutorial norvic intermedio 
 //--------------------------------
-Route::get('/profesores', [ProfesorController::class, 'index'])->name('profesores.index');
+Route::controller(ProfesorController::class)->group(function ()
+{
+   Route::get('/profesores','index')->name('profesores.index') ; 
+   Route::get('/profesores/crear','create')->name('profesores.create') ; 
+   Route::post('/profesores','store')->name('profesores.store') ; 
+   Route::get('/profesores/{id}/editar','edit')->name('profesores.edit') ; 
+   Route::put('/profesores/{id}','update')->name('profesores.update') ; 
+   Route::get('/profesores/{id}/ver','show')->name('profesores.show') ; 
+   Route::get('/profesores/{id}','destroy')->name('profesores.destroy') ; 
+
+
+});
+// Route::get('/profesores', [ProfesorController::class, 'index'])->name('profesores.index');
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumnos.index');
 Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
 
-Route::get('/profesores/crear', [ProfesorController::class, 'create'])->name('profesores.create');
-Route::post('/profesores',  [ProfesorController::class, 'store'])->name('profesores.store');
+// Route::get('/profesores/crear', [ProfesorController::class, 'create'])->name('profesores.create');
+//Route::post('/profesores',  [ProfesorController::class, 'store'])->name('profesores.store');
 
 Route::get('/alumnos/crear', [AlumnoController::class, 'create'])->name('alumnos.create');
 Route::post('/alumnos',  [AlumnoController::class, 'store'])->name('alumnos.store');
@@ -55,8 +75,8 @@ Route::post('/alumnos',  [AlumnoController::class, 'store'])->name('alumnos.stor
 Route::get('/cursos/crear', [CursoController::class, 'create'])->name('cursos.create');
 Route::post('/cursos',  [CursoController::class, 'store'])->name('cursos.store');
 
-Route::get('/profesores/{id}/editar', [ProfesorController::class, 'edit'])->name('profesores.edit');
-Route::put('/profesores/{id}', [ProfesorController::class, 'update'])->name('profesores.update');
+// Route::get('/profesores/{id}/editar', [ProfesorController::class, 'edit'])->name('profesores.edit');
+// Route::put('/profesores/{id}', [ProfesorController::class, 'update'])->name('profesores.update');
 
 Route::get('/alumnos/{id}/editar', [AlumnoController::class, 'edit'])->name('alumnos.edit');
 Route::put('/alumnos/{id}', [AlumnoController::class, 'update'])->name('alumnos.update');
@@ -65,12 +85,12 @@ Route::get('/cursos/{id}/editar', [CursoController::class, 'edit'])->name('curso
 Route::put('/cursos/{id}', [CursoController::class, 'update'])->name('cursos.update');
 
 
-Route::get('/profesores/{id}/ver', [ProfesorController::class, 'show'])->name('profesores.show');
+// Route::get('/profesores/{id}/ver', [ProfesorController::class, 'show'])->name('profesores.show');
 Route::get('/alumnos/{id}/ver', [AlumnoController::class, 'show'])->name('alumnos.show');
 Route::get('/cursos/{id}/ver', [CursoController::class, 'show'])->name('cursos.show');
 
 
-Route::delete('/profesores/{id}', [ProfesorController::class, 'destroy'])->name('profesores.destroy');
+// Route::delete('/profesores/{id}', [ProfesorController::class, 'destroy'])->name('profesores.destroy');
 
 Route::delete('/alumnos/{id}', [AlumnoController::class, 'destroy'])->name('alumnos.destroy');
 

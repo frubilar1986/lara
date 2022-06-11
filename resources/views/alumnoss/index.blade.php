@@ -2,6 +2,7 @@
 @section('title', $alumnos[0]->nombre_apellido)
 @section('contenido')
     <h2>Listado de Alumnos</h2>
+    <a href="{{ route ('alumnos.create')}}">Nuevo Alumno</a>
     <table>
         <tr>
             <th>Nombre y Apellido</th>
