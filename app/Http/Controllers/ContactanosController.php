@@ -19,9 +19,10 @@ class ContactanosController extends Controller
         # code...
         $correo = new ContactanosMailable($request->all());
         $contacto = $correo->contacto;
-        
-     Mail::to($contacto['correo'])->send($correo);
-    //  return redirect()->action([ProfesorController::class,'index']);
-     return redirect()->route('profesores.index')->with('info','Mensaje enviado correctamente!');
+
+        Mail::to($contacto['correo'])->send($correo);
+        Mail::to('junta@uncoma.edu.ar')->send($correo);
+        //  return redirect()->action([ProfesorController::class,'index']);
+        return redirect()->route('profesores.index')->with('info', 'Mensaje enviado correctamente!');
     }
 }

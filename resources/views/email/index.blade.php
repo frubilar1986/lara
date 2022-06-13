@@ -8,7 +8,7 @@
             @csrf
             
                 <label for="">Nombre</label>
-                <input type="text" name="name">
+                <input type="text" name="name" autocomplete="off">
           
             
                 <label for="">Correo</label>
